@@ -100,7 +100,14 @@ const SkillsCanvas = () => {
   ]);
 
   return (
-    <Canvas className="absolute inset-0 h-full w-full">
+    <Canvas className="absolute inset-0 h-full w-full"
+    gl={{
+      antialias: true,
+      powerPreference: "high-performance",
+    }}
+    onCreated={({ gl }) => {
+      gl.setSize(window.innerWidth, window.innerHeight);
+    }}>
       <PerspectiveCamera makeDefault position={[0, 0, 10]} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -163,7 +170,14 @@ const AnimatedSphere = ({
 // HeroCanvas Component
 const HeroCanvas = () => {
   return (
-    <Canvas className="absolute inset-0">
+    <Canvas className="absolute inset-4 "
+    gl={{
+      antialias: true,
+      powerPreference: "high-performance",
+    }}
+    onCreated={({ gl }) => {
+      gl.setSize(window.innerWidth, window.innerHeight);
+    }}>
       <PerspectiveCamera makeDefault position={[0, 0, 10]} />
       <Environment />
       <OrbitControls 
@@ -793,7 +807,14 @@ const AboutSection = () => {
 
 const ProjectCard3D = ({ project }: { project: any }) => {
   return (
-    <Canvas className="absolute inset-0 w-full h-full">
+    <Canvas className="absolute inset-0 w-full h-full
+    " gl={{
+      antialias: true,
+      powerPreference: "high-performance",
+    }}
+    onCreated={({ gl }) => {
+      gl.setSize(window.innerWidth, window.innerHeight);
+    }}>
       <PerspectiveCamera makeDefault position={[0, 0, 5]} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -1168,7 +1189,14 @@ const ExperienceSection = () => {
         <div className="relative">
           {/* Timeline line */}
           <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 -translate-y-4 w-8 h-8 rounded-full flex items-center justify-center shadow-lg z-10">
-            <Canvas className="w-full h-full">
+            <Canvas className="w-full h-full"
+            gl={{
+              antialias: true,
+              powerPreference: "high-performance",
+            }}
+            onCreated={({ gl }) => {
+              gl.setSize(window.innerWidth, window.innerHeight);
+            }}>
               <PerspectiveCamera makeDefault position={[0, 0, 3]} />
               <ambientLight intensity={0.5} />
               <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -1190,7 +1218,13 @@ const ExperienceSection = () => {
               >
                 {/* Timeline dot */}
                 <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 -translate-y-4 w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center shadow-lg z-10">
-                  <Canvas className="w-full h-full">
+                  <Canvas className="w-full h-full" gl={{
+                      antialias: true,
+                      powerPreference: "high-performance",
+                    }}
+                    onCreated={({ gl }) => {
+                      gl.setSize(window.innerWidth, window.innerHeight);
+                    }}>
                     <PerspectiveCamera makeDefault position={[0, 0, 3]} />
                     <ambientLight intensity={0.5} />
                     <directionalLight position={[10, 10, 5]} intensity={1} />
