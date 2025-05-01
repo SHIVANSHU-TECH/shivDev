@@ -34,7 +34,7 @@ const AnimatedText3D = ({ text }: { text: string }) => {
     <Float speed={3} rotationIntensity={0.2} floatIntensity={0.5}>
       <Text
         ref={ref}
-        font="/fonts/inter-bold.woff"
+        font="roboto"
         fontSize={0.75}
         color="#4f46e5"
         position={[0, 0, 0]}
@@ -170,7 +170,7 @@ const AnimatedSphere = ({
 // HeroCanvas Component
 const HeroCanvas = () => {
   return (
-    <Canvas className="absolute inset-4 "
+    <Canvas className="absolute inset-0 "
     gl={{
       antialias: true,
       powerPreference: "high-performance",
