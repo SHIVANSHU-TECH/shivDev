@@ -1,4 +1,6 @@
 "use client";
+
+// import dynamic from 'next/dynamic';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { 
@@ -16,6 +18,8 @@ import "./global.css";
 import { div, video } from 'framer-motion/client';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import Particles from "../components/particles";
+
+import { Suspense } from 'react';
 
 
 // 3D Text Component
@@ -176,8 +180,11 @@ const HeroCanvas = () => {
       powerPreference: "high-performance",
     }}
     onCreated={({ gl }) => {
-      gl.setSize(window.innerWidth, window.innerHeight);
-    }}>
+      if (typeof window !== 'undefined') {
+        gl.setSize(window.innerWidth, window.innerHeight);
+      }
+    }}
+  >
       <PerspectiveCamera makeDefault position={[0, 0, 10]} />
       <Environment />
       <OrbitControls 
@@ -462,7 +469,9 @@ const HeroSection = () => {
       {/* 3D Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 opacity-30 dark:opacity-60">
+        <Suspense fallback={<div className="h-screen w-full bg-gray-900" />}>
           <HeroCanvas />
+         </ Suspense> 
         </div>
       </div>
       
@@ -903,7 +912,7 @@ const ProjectsSection = () => {
       title: 'Password Generator',
       description: 'Interactive weather visualization dashboard with forecast data and historical comparisons.',
       category: 'web',
-      image: '/video/password.mp4',
+      video: '/video/password.mp4',
       hasVideo: true,
       tags: ['JavaScript', 'D3.js', 'API Integration'],
       link: '#'
