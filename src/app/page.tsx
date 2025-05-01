@@ -23,6 +23,7 @@ const AnimatedText3D = ({ text }: { text: string }) => {
   const ref = useRef<THREE.Object3D>(null);
   
   useFrame((state) => {
+    if (!ref.current) return;
     const t = state.clock.getElapsedTime();
     if (ref.current) {
       ref.current.position.y = Math.sin(t) * 0.1;
@@ -62,6 +63,7 @@ const SkillsOrb = ({ skill, position }: { skill: string; position: [number, numb
       mesh.current.rotation.x += 0.005;
       mesh.current.rotation.y += 0.01;
     }
+    else return;
   });
 
   return (
@@ -196,7 +198,7 @@ const HeroCanvas = () => {
 
 // Custom Cursor Component
 const CustomCursor = () => {
-  const cursorRef = useRef(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
