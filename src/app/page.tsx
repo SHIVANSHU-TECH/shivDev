@@ -1,7 +1,7 @@
 "use client";
 
 // import dynamic from 'next/dynamic';
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { 
   Menu, X, Moon, Sun, ChevronDown, Github, Linkedin, Twitter, Mail, 
@@ -18,13 +18,14 @@ import "./global.css";
 import { div, video } from 'framer-motion/client';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import Particles from "../components/particles";
+import {useSafeRef} from "../utility/useSafeRef";
 
 import { Suspense } from 'react';
 
 
 // 3D Text Component
 const AnimatedText3D = ({ text }: { text: string }) => {
-  const ref = useRef<THREE.Object3D>(null);
+  const ref = useSafeRef<THREE.Object3D>(null);
   
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
@@ -59,7 +60,7 @@ const AnimatedText3D = ({ text }: { text: string }) => {
 };
 
 const SkillsOrb = ({ skill, position }: { skill: string; position: [number, number, number] }) => {
-  const mesh = useRef<THREE.Mesh>(null);
+  const mesh = useSafeRef<THREE.Mesh>(null);
   
   useFrame(() => {
     if (mesh.current) {
@@ -147,7 +148,7 @@ const AnimatedSphere = ({
   color?: string;
   emissive?: string;
 }) => {
-  const mesh = useRef<THREE.Mesh>(null);
+  const mesh = useSafeRef<THREE.Mesh>(null);
   
   useFrame(() => {
     if (mesh.current) {
@@ -203,7 +204,7 @@ const HeroCanvas = () => {
 
 // Custom Cursor Component
 const CustomCursor = () => {
-  const cursorRef = useRef(null);
+  const cursorRef = useSafeRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
@@ -275,7 +276,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navRef = useRef(null);
+  const navRef = useSafeRef(null);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -462,7 +463,7 @@ const ScrollProgress = () => {
 
 // Hero Section
 const HeroSection = () => {
-  const controls = useRef<HTMLDivElement>(null);
+  const controls = useSafeRef<HTMLDivElement>(null);
   
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
@@ -1113,7 +1114,7 @@ const ExperienceSection = () => {
   ];
 
   const TimelineNode3D = ({ active }: { active: boolean }) => {
-    const mesh = useRef<THREE.Mesh>(null);
+    const mesh = useSafeRef<THREE.Mesh>(null);
     
     useFrame(() => {
       if (mesh.current) {
@@ -1137,7 +1138,7 @@ const ExperienceSection = () => {
 
 
   const Particles = ({ count = 200 }:{ count ?: number }) => {
-    const particles = useRef<THREE.Points>(null);
+    const particles = useSafeRef<THREE.Points>(null);
     
     useFrame(() => {
       if (particles.current) {
