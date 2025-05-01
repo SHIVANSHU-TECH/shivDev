@@ -4,7 +4,7 @@ import { Points } from '@react-three/drei';
 import * as THREE from 'three';
 
 const Particles = ({ count = 2000, color = "#4f46e5", size = 0.05 }) => {
-    const particles = useRef<THREE.Points>(null);
+    const particlesRef = useRef<THREE.Points>(null);
   
   // Generate random particle positions
   const particlesPosition = useMemo(() => {
