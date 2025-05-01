@@ -3,6 +3,7 @@ import { useSafeRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Points } from '@react-three/drei';
 import * as THREE from 'three';
+import { useSafeRef } from '@/utility/useSafeRef';
 
 const Particles = ({ count = 50, color = "#4f46e5", size = 0.05 }) => {
     const particlesRef = useSafeRef<THREE.Points>(null);
