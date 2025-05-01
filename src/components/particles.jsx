@@ -1,9 +1,10 @@
+"use client";
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Points } from '@react-three/drei';
 import * as THREE from 'three';
 
-const Particles = ({ count = 2000, color = "#4f46e5", size = 0.05 }) => {
+const Particles = ({ count = 50, color = "#4f46e5", size = 0.05 }) => {
     const particlesRef = useRef<THREE.Points>(null);
   
   // Generate random particle positions
