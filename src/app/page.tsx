@@ -903,7 +903,7 @@ const ProjectsSection = () => {
       title: 'Password Generator',
       description: 'Interactive weather visualization dashboard with forecast data and historical comparisons.',
       category: 'web',
-      image: '/video/PasswordGen.mp4',
+      image: '/video/password.mp4',
       hasVideo: true,
       tags: ['JavaScript', 'D3.js', 'API Integration'],
       link: '#'
