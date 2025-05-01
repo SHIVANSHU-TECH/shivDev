@@ -34,7 +34,7 @@ const AnimatedText3D = ({ text }: { text: string }) => {
     <Float speed={3} rotationIntensity={0.2} floatIntensity={0.5}>
       <Text
         ref={ref}
-        font="roboto"
+        // font="roboto"
         fontSize={0.75}
         color="#4f46e5"
         position={[0, 0, 0]}
@@ -913,7 +913,7 @@ const ProjectsSection = () => {
       title: 'MediConnect App',
       description: 'Healthcare mobile application connecting patients with doctors for virtual consultations.',
       category: 'mobile',
-      image: '/images/projects/mediconnect.jpg',
+      image: '/images/crypto.png',
       hasVideo: false,
       tags: ['Flutter', 'Firebase', 'WebRTC'],
       link: '#'
