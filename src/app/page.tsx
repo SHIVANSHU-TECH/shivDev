@@ -17,7 +17,7 @@ import * as THREE from 'three';
 import "./global.css";
 import { div, video } from 'framer-motion/client';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import Particles from "../components/particles";
+// import Particles from "../components/particles";
 
 
 import { Suspense } from 'react';
@@ -1298,7 +1298,7 @@ const ContactSection = () => {
               <Canvas>
                 <PerspectiveCamera makeDefault position={[0, 0, 5]} />
                 <ambientLight intensity={0.5} />
-                <Particles count={500} />
+                {/* <Particles count={50} /> */}
                 <EffectComposer>
                   <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
                 </EffectComposer>
