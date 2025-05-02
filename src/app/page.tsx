@@ -17,7 +17,7 @@ import * as THREE from 'three';
 import "./global.css";
 import { div, video } from 'framer-motion/client';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import Particles from "../Components/particles";
+import Particles from "../components/particles";
 
 
 import { Suspense } from 'react';
