@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
     
   },
-  productionBrowserSourceMaps: true
 };
 
 export default nextConfig;
