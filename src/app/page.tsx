@@ -950,11 +950,11 @@ const ProjectsSection = () => {
           <div className="absolute inset-0 opacity-30">
             <ProjectCard3D project={projects} />
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white inline-block relative">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center relative">
             My Projects
             <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"></div>
           </h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center">
             Explore my portfolio of projects spanning web applications, mobile apps, and UI/UX designs.
           </p>
         </motion.div>
