@@ -1,12 +1,12 @@
 "use client";
-import { useSafeRef, useMemo } from 'react';
+import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Points } from '@react-three/drei';
 import * as THREE from 'three';
-import { useSafeRef } from '@/utility/useSafeRef';
+
 
 const Particles = ({ count = 50, color = "#4f46e5", size = 0.05 }) => {
-    const particlesRef = useSafeRef<THREE.Points>(null);
+    const particlesRef = useRef<THREE.Points>(null);
   
   // Generate random particle positions
   const particlesPosition = useMemo(() => {
@@ -37,7 +37,7 @@ const Particles = ({ count = 50, color = "#4f46e5", size = 0.05 }) => {
       <bufferGeometry attach="geometry">
         <bufferAttribute
           attach="attributes-position"
-          count={particlesPosition.length / 3}
+          count={count}
           array={particlesPosition}
           itemSize={3}
         />

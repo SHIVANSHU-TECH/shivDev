@@ -1,4 +1,4 @@
-import SkillTag from "@/components/SkillTag";
+import SkillTag from "@/Components/SkillTag";
 import { skills } from "@/data/skills";
 
 export default function SkillsPage() {

@@ -1,7 +1,7 @@
 "use client";
 
 // import dynamic from 'next/dynamic';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo ,useRef} from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { 
   Menu, X, Moon, Sun, ChevronDown, Github, Linkedin, Twitter, Mail, 
@@ -17,15 +17,15 @@ import * as THREE from 'three';
 import "./global.css";
 import { div, video } from 'framer-motion/client';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import Particles from "../components/particles";
-import {useSafeRef} from "../utility/useSafeRef";
+import Particles from "../Components/particles";
+
 
 import { Suspense } from 'react';
 
 
 // 3D Text Component
 const AnimatedText3D = ({ text }: { text: string }) => {
-  const ref = useSafeRef<THREE.Object3D>(null);
+  const ref = useRef<THREE.Object3D>(null);
   
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
@@ -60,7 +60,7 @@ const AnimatedText3D = ({ text }: { text: string }) => {
 };
 
 const SkillsOrb = ({ skill, position }: { skill: string; position: [number, number, number] }) => {
-  const mesh = useSafeRef<THREE.Mesh>(null);
+  const mesh = useRef<THREE.Mesh>(null);
   
   useFrame(() => {
     if (mesh.current) {
@@ -148,7 +148,7 @@ const AnimatedSphere = ({
   color?: string;
   emissive?: string;
 }) => {
-  const mesh = useSafeRef<THREE.Mesh>(null);
+  const mesh = useRef<THREE.Mesh>(null);
   
   useFrame(() => {
     if (mesh.current) {
@@ -204,7 +204,7 @@ const HeroCanvas = () => {
 
 // Custom Cursor Component
 const CustomCursor = () => {
-  const cursorRef = useSafeRef(null);
+  const cursorRef = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
@@ -276,7 +276,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navRef = useSafeRef(null);
+  const navRef = useRef(null);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -463,7 +463,7 @@ const ScrollProgress = () => {
 
 // Hero Section
 const HeroSection = () => {
-  const controls = useSafeRef<HTMLDivElement>(null);
+  const controls = useRef<HTMLDivElement>(null);
   
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
@@ -1114,7 +1114,7 @@ const ExperienceSection = () => {
   ];
 
   const TimelineNode3D = ({ active }: { active: boolean }) => {
-    const mesh = useSafeRef<THREE.Mesh>(null);
+    const mesh = useRef<THREE.Mesh>(null);
     
     useFrame(() => {
       if (mesh.current) {
@@ -1136,44 +1136,6 @@ const ExperienceSection = () => {
     );
   };
 
-
-  const Particles = ({ count = 200 }:{ count ?: number }) => {
-    const particles = useSafeRef<THREE.Points>(null);
-    
-    useFrame(() => {
-      if (particles.current) {
-        particles.current.rotation.x += 0.0005;
-        particles.current.rotation.y += 0.001;
-      }
-    });
-  
-    const positions = useMemo(() => {
-      const positions = new Float32Array(count * 3);
-      for (let i = 0; i < count * 3; i++) {
-        positions[i] = (Math.random() - 0.5) * 10;
-      }
-      return positions;
-    }, [count]);
-
-    return (
-      <points ref={particles}>
-        <bufferGeometry attach="geometry">
-          <primitive
-          attach="attributes-position"
-          object={new THREE.BufferAttribute(positions, 3)}
-        />
-
-        </bufferGeometry>
-        <pointsMaterial
-          size={0.03}
-          color="#4f46e5"
-          sizeAttenuation
-          transparent
-          opacity={0.8}
-        />
-      </points>
-    );
-  };
   
   
   
